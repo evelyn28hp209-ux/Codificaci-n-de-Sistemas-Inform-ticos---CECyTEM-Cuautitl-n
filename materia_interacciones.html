@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Materia y sus Interacciones</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f0f8ff;
+      color: #222;
+    }
+
+    /* Encabezado superior */
+    .encabezado {
+      background: linear-gradient(to right, #2c3e50, #4a6572);
+      color: white;
+      padding: 15px 25px;
+      text-align: center;
+    }
+
+    .encabezado h1 {
+      margin-bottom: 8px;
+      font-size: 1.8em;
+    }
+
+    .info-superior {
+      font-size: 0.95em;
+      opacity: 0.95;
+    }
+
+    /* Contenedor principal */
+    .contenedor {
+      display: flex;
+      min-height: calc(100vh - 140px);
+    }
+
+    /* Sidebar izquierdo */
+    .sidebar {
+      width: 240px;
+      background-color: #e6f0fa;
+      padding: 20px 15px;
+      border-right: 1px solid #b0c4de;
+      overflow-y: auto;
+    }
+
+    .sidebar h3 {
+      margin-bottom: 15px;
+      color: #2c3e50;
+      font-size: 1.1em;
+    }
+
+    .sidebar ul {
+      list-style: none;
+    }
+
+    .sidebar li {
+      margin: 12px 0;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: #1a3a5f;
+      font-weight: 600;
+      display: block;
+      padding: 6px 10px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    .sidebar a:hover {
+      background-color: #d1e0f0;
+    }
+
+    /* Contenido principal */
+    .contenido-principal {
+      flex: 1;
+      padding: 25px;
+      overflow-y: auto;
+
+      background-image: url(data:image/jpeg;base64,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);
+    }
+
+    .contenido-materia h2 {
+      margin: 25px 0 15px 0;
+      color: #2c3e50;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    .contenido-materia p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .destacado {
+      background-color: #e3f2fd;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+      color: #0d47a1;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+
+    table, th, td {
+      border: 1px solid #90a4ae;
+    }
+
+    th {
+      background-color: #cfd8dc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    td {
+      padding: 8px;
+    }
+
+    ul {
+      margin: 10px 0 15px 20px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      margin: 10px 0;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .mezclas-img {
+      display: flex;
+      gap: 10px;
+      margin: 15px 0;
+    }
+
+    .mezclas-img img {
+      max-width: 50%;
+      max-height: 50%;
+    }
+
+    .video-materia {
+      max-width: 100%;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+
+    .pdf-link {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #2c3e50;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .pdf-link:hover {
+      background-color: #1a252f;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #2c3e50;
+      color: white;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Encabezado superior -->
+  <div class="encabezado">
+    <h1>⚛️ La Materia y sus Interacciones</h1>
+    <div class="info-superior">
+      <span id="visit-counter"> Visitas: --</span> | 
+      <span id="fechaHora">--</span>
+    </div>
+  </div>
+
+  <!-- Contenedor con sidebar y contenido -->
+  <div class="contenedor">
+    
+    <!-- Sidebar izquierdo: anclas a secciones -->
+    <div class="sidebar">
+      <h3>📚 Secciones</h3>
+      <ul>
+        <li><a href="#magnitudes">Magnitudes Fundamentales</a></li>
+        <li><a href="#conversion">Conversión de Unidades</a></li>
+        <li><a href="#conveccion">Convección</a></li>
+        <li><a href="#propiedades">Propiedades Químicas</a></li>
+        <li><a href="#estructura">Estructura del Átomo</a></li>
+        <li><a href="#mezclas">Mezclas</a></li>
+        <li><a href="#video">Video</a></li>
+        <li><a href="#pdf">Descargar PDF</a></li>
+      </ul>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="contenido-principal">
+      <div class="contenido-materia">
+
+        <h2 id="magnitudes">Magnitudes Fundamentales del Sistema Internacional (SI)</h2>
+        <p>Estas magnitudes son la base para medir cualquier fenómeno físico:</p>
+
+        <table>
+          <tr>
+            <th>Magnitud</th>
+            <th>Unidad (SI)</th>
+            <th>Símbolo</th>
+          </tr>
+          <tr><td>Longitud</td><td>Metro</td><td>m</td></tr>
+          <tr><td>Masa</td><td>Kilogramo</td><td>kg</td></tr>
+          <tr><td>Tiempo</td><td>Segundo</td><td>s</td></tr>
+          <tr><td>Temperatura</td><td>Kelvin</td><td>K</td></tr>
+          <tr><td>Intensidad de corriente</td><td>Ampere</td><td>A</td></tr>
+          <tr><td>Cantidad de sustancia</td><td>Mol</td><td>mol</td></tr>
+          <tr><td>Intensidad luminosa</td><td>Candela</td><td>cd</td></tr>
+        </table>
+
+        <h2 id="conversion">Conversión de Unidades</h2>
+        <p><strong>Centímetros cuadrados a metros cuadrados:</strong><br>
+          1 m² = 10,000 cm² → 50,000 cm² = 50,000 / 10,000 = <span class="destacado">5 m²</span></p>
+        
+        <p><strong>Centímetros cúbicos a metros cúbicos:</strong><br>
+          1 m³ = 1,000,000 cm³ → 2,000,000 cm³ = 2,000,000 / 1,000,000 = <span class="destacado">2 m³</span></p>
+
+        <h2 id="conveccion">Convección</h2>
+        <p>Es una forma de transferencia de calor en fluidos (líquidos y gases) mediante el movimiento de partículas calientes (que suben) y frías (que bajan). Ejemplo: el calentamiento del agua en una olla.</p>
+
+        <h2 id="propiedades">Propiedades Químicas de la Materia</h2>
+        <table>
+          <tr>
+            <th>Propiedad Química</th>
+            <th>Definición</th>
+          </tr>
+          <tr><td>Reactividad</td><td>Capacidad de una sustancia para reaccionar con otra</td></tr>
+          <tr><td>Inflamabilidad</td><td>Facilidad para arder en presencia de oxígeno</td></tr>
+          <tr><td>Toxicidad</td><td>Capacidad de causar daño a seres vivos</td></tr>
+          <tr><td>Estabilidad</td><td>Resistencia a descomponerse</td></tr>
+        </table>
+
+        <h2 id="estructura">Estructura del Átomo</h2>
+        <p>El átomo está formado por:</p>
+        <ul>
+          <li><strong>Protones</strong> (+): en el núcleo</li>
+          <li><strong>Neutrones</strong> (0): en el núcleo</li>
+          <li><strong>Electrones</strong> (–): en órbitas alrededor del núcleo</li>
+        </ul>
+        <img src="img/atomo.jpg" alt="Estructura del átomo">
+
+        <h2 id="mezclas">Mezclas</h2>
+        <p><strong>Homogéneas</strong>: composición uniforme (ej. agua con sal).<br>
+           <strong>Heterogéneas</strong>: composición no uniforme (ej. arena con agua).</p>
+        
+        <div class="mezclas-img">
+          <img src="img/mezcla-homogenea.png" alt="Mezcla homogénea">
+          <img src="img/mezcla-heterogenea.png" alt="Mezcla heterogénea">
+        </div>
+
+        <h2 id="video">🎥 Video de Apoyo</h2>
+        <video autoplay loop controls>
+          <source src="videos/lengua.mp4">
+        </video>
+
+        <h2 id="pdf">📄 Material de Apoyo</h2>
+        <a href="pdfs/materia.pdf" class="pdf-link" target="_blank">Descargar Guía Completa (PDF)</a>
+        <a href="inicio.html" class="pdf-link">Inicio</a>
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p><small>© 2026 - CECyTEM Cuautitlán - Tercer Semestre de Programación</small></p>
+  </footer>
+
+  <script>
+    // Contador de visitas específico para esta materia
+    let visitas = localStorage.getItem('visitas_materia') || 0;
+    visitas = parseInt(visitas) + 1;
+    localStorage.setItem('visitas_materia', visitas);
+    document.getElementById('visit-counter').textContent = ` Visitas: ${visitas}`;
+
+    // Fecha y hora
+    const now = new Date();
+    document.getElementById('fechaHora').textContent = ` ${now.toLocaleDateString('es-MX')} |  ${now.toLocaleTimeString('es-MX')}`;
+  </script>
+</body>
+</html>

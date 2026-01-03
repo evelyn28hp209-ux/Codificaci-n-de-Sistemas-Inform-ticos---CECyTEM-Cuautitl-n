@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codificación de Sistemas Informáticos - CECyTEM Cuautitlán</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    /* Encabezado superior */
+    .encabezado {
+      background: linear-gradient(to right, #005500, #007700);
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .encabezado h1 {
+      margin-bottom: 5px;
+    }
+
+    .encabezado h2 {
+      font-size: 1.2em;
+      margin-bottom: 8px;
+    }
+
+    .fecha-visitas {
+      font-size: 0.9em;
+      opacity: 0.9;
+    }
+
+    /* Contenedor principal con sidebar y contenido */
+    .contenedor-principal {
+      display: flex;
+      min-height: calc(100vh - 180px); /* Ajusta según el encabezado y footer */
+    }
+
+    /* Sidebar izquierdo */
+    .sidebar {
+      width: 250px;
+      background-color: #e0f0e0;
+      padding: 20px;
+      border-right: 2px solid #005500;
+      overflow-y: auto;
+    }
+
+    .sidebar h3 {
+      margin-bottom: 15px;
+      color: #005500;
+    }
+
+    .sidebar ul {
+      list-style: none;
+    }
+
+    .sidebar li {
+      margin: 10px 0;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: #003300;
+      font-weight: bold;
+      display: block;
+      padding: 8px;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #c0e0c0;
+    }
+
+    /* Área de contenido principal */
+    .contenido-principal {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+
+      background-image: url(data:image/jpeg;base64,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);
+    }
+
+    .materia-seccion {
+      margin-bottom: 30px;
+      padding: 15px;
+      background: rgb(169, 221, 133);
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .cuestionario {
+      background: rgb(144, 215, 147);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .pregunta {
+      margin: 15px 0;
+    }
+
+    .pregunta p {
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .pregunta label {
+      display: block;
+      margin: 5px 0;
+    }
+
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #005500;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    button:hover {
+      background-color: #003300;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #005500;
+      color: white;
+      margin-top: 20px;
+    }
+
+    hr {
+      margin: 20px 0;
+      border: none;
+      height: 2px;
+      background: #005500;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Encabezado superior -->
+  <div class="encabezado">
+    <h1>Tercer semestre</h1>
+    <h2>Programación- CECyTEM Cuautitlán</h2>
+    <div class="fecha-visitas">
+      <span id="visit-counter"> Visitas: --</span> | 
+      <span id="fechaHora">--</span>
+    </div>
+  </div>
+
+  <!-- Contenedor con sidebar y contenido -->
+  <div class="contenedor-principal">
+    
+    <!-- Sidebar izquierdo: materias -->
+    <div class="sidebar">
+      <h3>Materias del Segundo Semestre</h3>
+      <ul>
+        <li><a href="ingles.html"><img src="http://www.cuadernodeingles.com/cuaderno_mes/imagenes/10_may/imagen9.gif">Ingles I</a></li>
+        <li><a href="ciencias_sociales.html"><img src="https://cdn-icons-png.flaticon.com/128/5231/5231460.png"> Ciencias Sociales</a></li>
+        <li><a href="materia_interacciones.html"><img src="https://cdn-icons-png.flaticon.com/128/5483/5483711.png"> La Materia y sus Interacciones</a></li>
+        <li><a href="Lengua__comunicacion.html"><img src="https://www.footamax.com/logo/logo_espanyol.gif"> Lengua y Comunicación</a></li>
+      </ul>
+    </div>
+
+    <!-- Contenido principal: cuestionario -->
+    <div class="contenido-principal">
+      <h2>📝 Cuestionario Integrado: Prueba tus conocimientos</h2>
+      <p><i>RESPONDELO DESPUES DE VER LA PÁGINA COMPLETA PARA ACERTAR EN TODO \^o^/</i></p><br>
+      
+      <form id="encuestaGeneral">
+        <!-- INGLÉS -->
+        <h3> Inglés</h3>
+        <div class="pregunta">
+          <p>1. ¿Cuál es el plural irregular de "child"?</p>
+          <label><input type="radio" name="q1" value="a"> childs</label>
+          <label><input type="radio" name="q1" value="b"> children</label>
+          <label><input type="radio" name="q1" value="c"> childes</label>
+        </div>
+
+        <div class="pregunta">
+          <p>2. Verdadero o Falso: "An" se usa antes de palabras que empiezan con sonido vocal.</p>
+          <label><input type="radio" name="q2" value="v"> Verdadero</label>
+          <label><input type="radio" name="q2" value="f"> Falso</label>
+        </div>
+
+        <!-- CIENCIAS SOCIALES -->
+        <h3>Ciencias Sociales</h3>
+        <div class="pregunta">
+          <p>3. ¿Qué elementos forman el Estado?</p>
+          <label><input type="checkbox" name="q3" value="pob"> Población</label>
+          <label><input type="checkbox" name="q3" value="terr"> Territorio</label>
+          <label><input type="checkbox" name="q3" value="sober"> Soberanía</label>
+          <label><input type="checkbox" name="q3" value="gob"> Gobierno</label>
+          <label><input type="checkbox" name="q3" value="moneda"> Moneda única</label>
+        </div>
+
+        <div class="pregunta">
+          <p>4. ¿Qué es la ciudadanía política?</p>
+          <label><input type="radio" name="q4" value="a"> Derecho a la educación</label>
+          <label><input type="radio" name="q4" value="b"> Derecho a votar y ser votado</label>
+          <label><input type="radio" name="q4" value="c"> Derecho a un salario justo</label>
+        </div>
+
+        <!-- MATERIA Y SUS INTERACCIONES -->
+        <h3>La Materia y sus Interacciones</h3>
+        <div class="pregunta">
+          <p>5. ¿Cuántos cm³ hay en 1 m³?</p>
+          <label><input type="radio" name="q5" value="a"> 1,000</label>
+          <label><input type="radio" name="q5" value="b"> 10,000</label>
+          <label><input type="radio" name="q5" value="c"> 1,000,000</label>
+        </div>
+
+        <div class="pregunta">
+          <p>6. Empareja: ¿Qué partícula tiene carga negativa?</p>
+          <label><input type="radio" name="q6" value="a"> Protón</label>
+          <label><input type="radio" name="q6" value="b"> Neutrón</label>
+          <label><input type="radio" name="q6" value="c"> Electrón</label>
+        </div>
+
+        <!-- LENGUA Y COMUNICACIÓN -->
+        <h3>Lengua y Comunicación</h3>
+        <div class="pregunta">
+          <p>7. ¿Qué tipo de texto busca argumentar una postura con evidencia?</p>
+          <label><input type="radio" name="q7" value="a"> Narrativo</label>
+          <label><input type="radio" name="q7" value="b"> Descriptivo</label>
+          <label><input type="radio" name="q7" value="c"> Argumentativo</label>
+        </div>
+
+        <div class="pregunta">
+          <p>8. Escribe un sinónimo de "comunicación":</p>
+          <input type="text" name="q8" placeholder="Ej. diálogo, intercambio...">
+        </div>
+
+        <!-- Más preguntas -->
+        <h3>Más preguntas integradas</h3>
+        <div class="pregunta">
+          <p>9. (Inglés) ¿Cuál oración está en Present Simple?</p>
+          <label><input type="radio" name="q9" value="a"> I am eating</label>
+          <label><input type="radio" name="q9" value="b"> She works every day</label>
+          <label><input type="radio" name="q9" value="c"> They were happy</label>
+        </div>
+
+        <div class="pregunta">
+          <p>10. (Ciencias Sociales) Falso o Verdadero: La Pirámide de Kelsen tiene a los reglamentos en la cúspide.</p>
+          <label><input type="radio" name="q10" value="f"> Falso</label>
+          <label><input type="radio" name="q10" value="v"> Verdadero</label>
+        </div>
+
+        <div class="pregunta">
+          <p>11. (Materia) Una mezcla homogénea tiene...</p>
+          <label><input type="radio" name="q11" value="a"> Composición no uniforme</label>
+          <label><input type="radio" name="q11" value="b"> Composición uniforme</label>
+        </div>
+
+        <div class="pregunta">
+          <p>12. (Lengua) ¿Qué significa "síntesis" en un texto?</p>
+          <textarea name="q12" placeholder="Escribe tu respuesta..."></textarea>
+        </div>
+
+        <div class="pregunta">
+          <p>13. (Inglés) ¿Cuál es el posesivo de "it"?</p>
+          <label><input type="radio" name="q13" value="a"> it's</label>
+          <label><input type="radio" name="q13" value="b"> its</label>
+          <label><input type="radio" name="q13" value="c"> it</label>
+        </div>
+
+        <div class="pregunta">
+          <p>14. (Ciencias Sociales) ¿Qué teórico dijo que el ser humano en estado natural era "bueno"?</p>
+          <label><input type="radio" name="q14" value="a"> Hobbes</label>
+          <label><input type="radio" name="q14" value="b"> Locke</label>
+          <label><input type="radio" name="q14" value="c"> Rousseau</label>
+        </div>
+
+        <div class="pregunta">
+          <p>15. (Materia) ¿Cuál NO es una magnitud fundamental?</p>
+          <label><input type="radio" name="q15" value="a"> Masa</label>
+          <label><input type="radio" name="q15" value="b"> Velocidad</label>
+          <label><input type="radio" name="q15" value="c"> Tiempo</label>
+        </div>
+
+        <div class="pregunta">
+          <p>16. (Lengua) ¿Qué tipo de texto es "Vocación de pepazo"?</p>
+          <label><input type="radio" name="q16" value="a"> Científico</label>
+          <label><input type="radio" name="q16" value="b"> Reflexivo/ensayo</label>
+          <label><input type="radio" name="q16" value="c"> Poético</label>
+        </div>
+
+        <div class="pregunta">
+          <p>17. (Inglés) Completa: She _ to school every day.</p>
+          <label><input type="radio" name="q17" value="a"> go</label>
+          <label><input type="radio" name="q17" value="b"> goes</label>
+          <label><input type="radio" name="q17" value="c"> going</label>
+        </div>
+
+        <div class="pregunta">
+          <p>18. (Ciencias Sociales) ¿Qué garantiza el enfoque de derechos humanos?</p>
+          <label><input type="radio" name="q18" value="a"> Solo seguridad</label>
+          <label><input type="radio" name="q18" value="b"> Dignidad, igualdad y no discriminación</label>
+          <label><input type="radio" name="q18" value="c"> Solo empleo</label>
+        </div>
+
+        <div class="pregunta">
+          <p>19. (Materia) La convección ocurre en:</p>
+          <label><input type="checkbox" name="q19" value="a"> Sólidos</label>
+          <label><input type="checkbox" name="q19" value="b"> Líquidos</label>
+          <label><input type="checkbox" name="q19" value="c"> Gases</label>
+        </div>
+
+        <div class="pregunta">
+          <p>20. (Lengua) ¿Por qué son importantes los textos en la sociedad?</p>
+          <textarea name="q20" placeholder="Reflexiona en 2-3 líneas..."></textarea>
+        </div>
+
+        <button type="submit">Enviar Cuestionario</button>
+      </form>
+
+      <!-- Resultado: número de respuestas correctas -->
+      <div id="resultado" style="margin-top: 20px; padding: 15px; background: #e8f5e9; border-radius: 8px; display: none;">
+        <h3>✓Resultado del cuestionario</h3>
+        <p id="mensajeResultado"></p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p><small>© 2026 - CECyTEM Cuautitlán - Tercer Semestre de Programación</small></p>
+  </footer>
+
+  <script>
+    // Contador de visitas y fecha
+    
+    // Contador de visitas específico para esta materia
+    let visitas = localStorage.getItem('visitas_lengua') || 0;
+    visitas = parseInt(visitas) + 1;
+    localStorage.setItem('visitas_lengua', visitas);
+    document.getElementById('visit-counter').textContent = ` Visitas: ${visitas}`;
+
+    // Fecha y hora
+    const now = new Date();
+    document.getElementById('fechaHora').textContent = ` ${now.toLocaleDateString('es-MX')} |  ${now.toLocaleTimeString('es-MX')}`;
+  
+
+    // Respuestas correctas
+    const respuestasCorrectas = {
+      q1: 'b',
+      q2: 'v',
+      q3: ['pob', 'terr', 'sober', 'gob'], // sin "moneda"
+      q4: 'b',
+      q5: 'c',
+      q6: 'c',
+      q7: 'c',
+      q9: 'b',
+      q10: 'f',
+      q11: 'b',
+      q13: 'b',
+      q14: 'c',
+      q15: 'b',
+      q16: 'b',
+      q17: 'b',
+      q18: 'b',
+      q19: ['b', 'c'] // líquidos y gases
+    };
+
+    // Manejo del formulario
+    document.getElementById('encuestaGeneral').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      let correctas = 0;
+      let totalPreguntas = 0;
+
+      // P1
+      totalPreguntas++; if (document.querySelector('input[name="q1"]:checked')?.value === respuestasCorrectas.q1) correctas++;
+
+      // P2
+      totalPreguntas++; if (document.querySelector('input[name="q2"]:checked')?.value === respuestasCorrectas.q2) correctas++;
+
+      // P3 (checkbox)
+      totalPreguntas++;
+      const q3Seleccionadas = Array.from(document.querySelectorAll('input[name="q3"]:checked')).map(cb => cb.value);
+      const q3Correctas = respuestasCorrectas.q3;
+      if (q3Seleccionadas.length === q3Correctas.length && 
+          q3Seleccionadas.every(v => q3Correctas.includes(v)) && 
+          q3Correctas.every(v => q3Seleccionadas.includes(v))) {
+        correctas++;
+      }
+
+      // P4
+      totalPreguntas++; if (document.querySelector('input[name="q4"]:checked')?.value === respuestasCorrectas.q4) correctas++;
+
+      // P5
+      totalPreguntas++; if (document.querySelector('input[name="q5"]:checked')?.value === respuestasCorrectas.q5) correctas++;
+
+      // P6
+      totalPreguntas++; if (document.querySelector('input[name="q6"]:checked')?.value === respuestasCorrectas.q6) correctas++;
+
+      // P7
+      totalPreguntas++; if (document.querySelector('input[name="q7"]:checked')?.value === respuestasCorrectas.q7) correctas++;
+
+      // P8: texto abierto → aceptamos cualquier cosa no vacía
+      totalPreguntas++;
+      const q8 = document.querySelector('input[name="q8"]').value.trim();
+      if (q8 !== '') correctas++;
+
+      // P9
+      totalPreguntas++; if (document.querySelector('input[name="q9"]:checked')?.value === respuestasCorrectas.q9) correctas++;
+
+      // P10
+      totalPreguntas++; if (document.querySelector('input[name="q10"]:checked')?.value === respuestasCorrectas.q10) correctas++;
+
+      // P11
+      totalPreguntas++; if (document.querySelector('input[name="q11"]:checked')?.value === respuestasCorrectas.q11) correctas++;
+
+      // P12: texto abierto
+      totalPreguntas++;
+      const q12 = document.querySelector('textarea[name="q12"]').value.trim();
+      if (q12 !== '') correctas++;
+
+      // P13
+      totalPreguntas++; if (document.querySelector('input[name="q13"]:checked')?.value === respuestasCorrectas.q13) correctas++;
+
+      // P14
+      totalPreguntas++; if (document.querySelector('input[name="q14"]:checked')?.value === respuestasCorrectas.q14) correctas++;
+
+      // P15
+      totalPreguntas++; if (document.querySelector('input[name="q15"]:checked')?.value === respuestasCorrectas.q15) correctas++;
+
+      // P16
+      totalPreguntas++; if (document.querySelector('input[name="q16"]:checked')?.value === respuestasCorrectas.q16) correctas++;
+
+      // P17
+      totalPreguntas++; if (document.querySelector('input[name="q17"]:checked')?.value === respuestasCorrectas.q17) correctas++;
+
+      // P18
+      totalPreguntas++; if (document.querySelector('input[name="q18"]:checked')?.value === respuestasCorrectas.q18) correctas++;
+
+      // P19 (checkbox)
+      totalPreguntas++;
+      const q19Seleccionadas = Array.from(document.querySelectorAll('input[name="q19"]:checked')).map(cb => cb.value);
+      const q19Correctas = respuestasCorrectas.q19;
+      if (q19Seleccionadas.length === q19Correctas.length && 
+          q19Seleccionadas.every(v => q19Correctas.includes(v)) && 
+          q19Correctas.every(v => q19Seleccionadas.includes(v))) {
+        correctas++;
+      }
+
+      // P20: texto abierto
+      totalPreguntas++;
+      const q20 = document.querySelector('textarea[name="q20"]').value.trim();
+      if (q20 !== '') correctas++;
+
+      // Mostrar resultado
+      const resultadoDiv = document.getElementById('resultado');
+      const mensaje = document.getElementById('mensajeResultado');
+      mensaje.innerHTML = `¡Has respondido correctamente <strong>${correctas}</strong> de <strong>${totalPreguntas}</strong> preguntas.`;
+      resultadoDiv.style.display = 'block';
+    });
+  </script>
+</body>
+</html>

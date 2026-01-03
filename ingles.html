@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inglés - Segundo Semestre</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    /* Encabezado superior */
+    .encabezado {
+      background: linear-gradient(to right, #0055aa, #0077cc);
+      color: white;
+      padding: 15px 25px;
+      text-align: center;
+      position: relative;
+    }
+
+    .encabezado h1 {
+      margin-bottom: 8px;
+    }
+
+    .info-superior {
+      font-size: 0.95em;
+      opacity: 0.95;
+    }
+
+    /* Contenedor principal */
+    .contenedor {
+      display: flex;
+      min-height: calc(100vh - 140px); /* - altura del header y footer */
+    }
+
+    /* Sidebar izquierdo */
+    .sidebar {
+      width: 240px;
+      background-color: #eef7ff;
+      padding: 20px 15px;
+      border-right: 1px solid #ccdfff;
+      overflow-y: auto;
+    }
+
+    .sidebar h3 {
+      margin-bottom: 15px;
+      color: #0055aa;
+      font-size: 1.1em;
+    }
+
+    .sidebar ul {
+      list-style: none;
+    }
+
+    .sidebar li {
+      margin: 12px 0;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: #004488;
+      font-weight: 600;
+      display: block;
+      padding: 6px 10px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    .sidebar a:hover {
+      background-color: #d0e6ff;
+    }
+
+    /* Contenido principal */
+    .contenido-principal {
+      flex: 1;
+      padding: 25px;
+      overflow-y: auto;
+
+      background-image: url(img/morado.jpg);
+    }
+
+    .contenido-materia h2 {
+      margin: 25px 0 15px 0;
+      color: #0055aa;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 5px;
+    }
+
+    .contenido-materia h3 {
+      margin: 20px 0 10px 0;
+      color: #0077cc;
+    }
+
+    .contenido-materia p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .destacado {
+      background-color: #e3f2fd;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+      color: #0055aa;
+    }
+
+    .video-materia {
+      max-width: 100%;
+      height: auto;
+      margin: 15px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .pdf-link {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #0055aa;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .pdf-link:hover {
+      background-color: #003d7a;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #0055aa;
+      color: white;
+      margin-top: 30px;
+    }
+
+    /* Estilo para TikTok embed (opcional) */
+    .tiktok-embed {
+      max-width: 100%;
+      margin: 15px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Encabezado superior -->
+  <div class="encabezado">
+    <h1>📘 Inglés</h1>
+    <div class="info-superior">
+      <span id="visit-counter"> Visitas: --</span> | 
+      <span id="fechaHora">--</span>
+    </div>
+  </div>
+
+  <!-- Contenedor con sidebar y contenido -->
+  <div class="contenedor">
+    
+    <!-- Sidebar izquierdo: anclas a secciones -->
+    <div class="sidebar">
+      <h3>📚 Secciones</h3>
+      <ul>
+        <li><a href="#objetivo">Objetivo</a></li>
+        <li><a href="#plural-nouns">Plural Nouns</a></li>
+        <li><a href="#irregular-plural">Irregular Plural</a></li>
+        <li><a href="#articles">Articles</a></li>
+        <li><a href="#to-be">Verbo "To Be"</a></li>
+        <li><a href="#prepositions">Prepositions</a></li>
+        <li><a href="#would-like">Would like / Like</a></li>
+        <li><a href="#present-simple">Present Simple</a></li>
+        <li><a href="#tiktok">Aprende con TikTok</a></li>
+        <li><a href="#video">Video</a></li>
+        <li><a href="#pdf">Descargar PDF</a></li>
+      </ul>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="contenido-principal">
+      <div class="contenido-materia">
+
+        <h2 id="objetivo">Objetivo de la materia</h2>
+        <p>Desarrollar competencias lingüísticas básicas en inglés, enfocadas en la comunicación oral y escrita, mediante el uso de estructuras gramaticales fundamentales y vocabulario cotidiano.</p>
+
+        <h2>Temas desarrollados</h2>
+
+        <h3 id="plural-nouns">🔹 Plural Nouns (Sustantivos en plural)</h3>
+        <p>Los sustantivos en plural indican más de un objeto o persona. La regla general es añadir <strong>-s</strong> al final (ej. <em>cat → cats</em>). Sin embargo, existen excepciones.</p>
+
+        <h3 id="irregular-plural">🔹 Irregular Plural Nouns</h3>
+        <p>Algunos sustantivos no siguen la regla. Ejemplos comunes: <br>
+          <span class="destacado">man → men</span>, 
+          <span class="destacado">woman → women</span>, 
+          <span class="destacado">child → children</span>, 
+          <span class="destacado">tooth → teeth</span>, 
+          <span class="destacado">mouse → mice</span>.
+        </p>
+
+        <h3 id="articles">🔹 Articles (Artículos)</h3>
+        <p>Los artículos definen si un sustantivo es específico o general:<br>
+          • <strong>a / an</strong>: para cosas no específicas (a book, an apple)<br>
+          • <strong>the</strong>: para cosas específicas (the sun, the teacher)
+        </p>
+
+        <h3 id="to-be">🔹 Verbo "To Be"</h3>
+        <p>El verbo "to be" es esencial en inglés:<br>
+          <strong>Afirmativo</strong>: I am, You are, He/She/It is<br>
+          <strong>Negativo</strong>: I am not, You are not (aren’t), He/She/It is not (isn’t)
+        </p>
+
+        <h3 id="prepositions">🔹 Prepositions of Place and Time</h3>
+        <p><strong>Lugar</strong>: in, on, at, under, next to<br>
+          <strong>Tiempo</strong>: in (mayo, 2025), on (lunes, 5 de mayo), at (5 p.m.)
+        </p>
+
+        <h3 id="would-like">🔹 Would like / Like / Don’t like</h3>
+        <p>Expresan preferencias:<br>
+          • I <strong>would like</strong> a coffee. (Quisiera...)<br>
+          • I <strong>like</strong> music.<br>
+          • I <strong>don’t like</strong> spiders.
+        </p>
+
+        <h3 id="present-simple">🔹 Present Simple</h3>
+        <p>Se usa para hábitos, verdades generales y rutinas:<br>
+          • She <strong>works</strong> every day.<br>
+          • Water <strong>boils</strong> at 100°C.<br>
+          • I <strong>study</strong> programming.
+        </p>
+
+        </blockquote>
+        <script async src="https://www.tiktok.com/embed.js"></script>
+
+        <h2 id="video">🎥 Video de Apoyo</h2>
+        <video  autoplay loop controls>
+          <source src="videos/ingles.mp4">
+        </video>
+
+        <h2 id="pdf">📄 Material de Apoyo</h2>
+        <a href="pdfs/ingles.pdf" class="pdf-link" target="_blank">Descargar Guía Completa (PDF)</a>
+        <a href="inicio.html" class="pdf-link" target="_blank">Inicio</a>
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p><small>© 2026 - CECyTEM Cuautitlán - Tercer Semestre de Programación</small></p>
+  </footer>
+
+  <script>
+    // Contador de visitas
+    let visitas = localStorage.getItem('visitas_ingles') || 0;
+    visitas = parseInt(visitas) + 1;
+    localStorage.setItem('visitas_ingles', visitas);
+    document.getElementById('visit-counter').textContent = ` Visitas: ${visitas}`;
+
+    // Fecha y hora
+    const now = new Date();
+    document.getElementById('fechaHora').textContent = ` ${now.toLocaleDateString('es-MX')} |  ${now.toLocaleTimeString('es-MX')}`;
+  </script>
+</body>
+</html>

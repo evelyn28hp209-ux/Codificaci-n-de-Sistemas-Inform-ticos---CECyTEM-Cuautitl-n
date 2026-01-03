@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ciencias Sociales - Segundo Semestre</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    /* Encabezado superior */
+    .encabezado {
+      background: linear-gradient(to right, #b3261e, #d32f2f);
+      color: white;
+      padding: 15px 25px;
+      text-align: center;
+      position: relative;
+    }
+
+    .encabezado h1 {
+      margin-bottom: 8px;
+      font-size: 1.8em;
+    }
+
+    .info-superior {
+      font-size: 0.95em;
+      opacity: 0.95;
+    }
+
+    /* Contenedor principal */
+    .contenedor {
+      display: flex;
+      min-height: calc(100vh - 140px);
+    }
+
+    /* Sidebar izquierdo */
+    .sidebar {
+      width: 240px;
+      background-color: #fceaea;
+      padding: 20px 15px;
+      border-right: 1px solid #f5bfbf;
+      overflow-y: auto;
+    }
+
+    .sidebar h3 {
+      margin-bottom: 15px;
+      color: #b3261e;
+      font-size: 1.1em;
+    }
+
+    .sidebar ul {
+      list-style: none;
+    }
+
+    .sidebar li {
+      margin: 12px 0;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: #880e0e;
+      font-weight: 600;
+      display: block;
+      padding: 6px 10px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    .sidebar a:hover {
+      background-color: #f8d7da;
+    }
+
+    /* Contenido principal */
+    .contenido-principal {
+      flex: 1;
+      padding: 25px;
+      overflow-y: auto;
+
+      background: linear-gradient(rgb(255, 164, 164), rgb(255, 166, 166), rgb(255, 193, 167));
+      background-repeat: no-repeat;
+      height: 100%;
+      margin: 0%;
+      background-attachment: fixed;
+    }
+
+    .contenido-materia h2 {
+      margin: 25px 0 15px 0;
+      color: #b3261e;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 5px;
+    }
+
+    .contenido-materia h3 {
+      margin: 20px 0 10px 0;
+      color: #d32f2f;
+    }
+
+    .contenido-materia p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .destacado {
+      background-color: #ffebee;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+      color: #b71c1c;
+    }
+
+    .reflexion-box {
+      background-color: #fde0dc;
+      padding: 15px;
+      border-left: 4px solid #d32f2f;
+      margin: 15px 0;
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      margin: 10px 0;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* Cuestionario */
+    .cuestionario {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin: 20px 0;
+    }
+
+    .pregunta {
+      margin: 15px 0;
+    }
+
+    .pregunta p {
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .pregunta label {
+      display: block;
+      margin: 5px 0;
+    }
+
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-family: inherit;
+    }
+
+    textarea {
+      min-height: 60px;
+    }
+
+    button {
+      background-color: #b3261e;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    button:hover {
+      background-color: #880e0e;
+    }
+
+    .video-materia {
+      max-width: 100%;
+      margin: 15px 0;
+      border-radius: 8px;
+    }
+
+    .pdf-link {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #b3261e;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .pdf-link:hover {
+      background-color: #880e0e;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #b3261e;
+      color: white;
+      margin-top: 30px;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f1f8e9;
+      border-radius: 8px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Encabezado superior -->
+  <div class="encabezado">
+    <h1>🌍 Ciencias Sociales</h1>
+    <div class="info-superior">
+      <span id="visit-counter"> Visitas: --</span> | 
+      <span id="fechaHora">--</span>
+    </div>
+  </div>
+
+  <!-- Contenedor con sidebar y contenido -->
+  <div class="contenedor">
+    
+    <!-- Sidebar izquierdo: anclas -->
+    <div class="sidebar">
+      <h3>📚 Secciones</h3>
+      <ul>
+        <li><a href="#contrato-social">Contrato Social</a></li>
+        <li><a href="#estado-ciudadania">Estado y Ciudadanía</a></li>
+        <li><a href="#sistema-juridico">Sistema Jurídico</a></li>
+        <li><a href="#piramide">Pirámide de Kelsen</a></li>
+        <li><a href="#reflexion">Reflexión</a></li>
+        <li><a href="#cuestionario">Cuestionario</a></li>
+        <li><a href="#video">Video</a></li>
+        <li><a href="#pdf">PDF</a></li>
+      </ul>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="contenido-principal">
+      <div class="contenido-materia">
+
+        <h2 id="contrato-social">Contrato Social con Perspectiva de Género e Interculturalidad</h2>
+        <p>El <strong>contrato social</strong> es un acuerdo teórico entre los individuos y el Estado para vivir en sociedad de forma ordenada. Jean-Jacques Rousseau lo definió como la entrega de libertades individuales a cambio de seguridad colectiva. Desde una <span class="destacado">perspectiva de género e interculturalidad</span>, este contrato debe reconocer la igualdad, diversidad cultural y derechos de grupos históricamente marginados.</p>
+
+        <h2 id="estado-ciudadania">Estado y Ciudadanía Civil</h2>
+        <p>El Estado moderno se caracteriza por tener: <strong>población, territorio, soberanía, gobierno y orden jurídico</strong>. La ciudadanía civil garantiza derechos como la libertad de expresión, acceso a la justicia, educación y salud. Las <strong>garantías instrumentales</strong> (como el juicio de amparo) protegen estos derechos frente a abusos del poder.</p>
+
+        <h2 id="sistema-juridico">Sistema Jurídico Mexicano</h2>
+        <p>Es el conjunto de normas, instituciones y procedimientos que regulan la vida en México. Se basa en la Constitución Política de los Estados Unidos Mexicanos y se organiza en tres niveles: federal, estatal y municipal.</p>
+
+        <h3 id="piramide">Pirámide de Kelsen</h3>
+        <p>Modelo jerárquico del orden jurídico. En la cúspide está la <strong>Constitución</strong>, seguida por leyes, reglamentos y actos administrativos.</p>
+        <img src="https://1.bp.blogspot.com/-Ua2Pt61igng/XqytxXd3nSI/AAAAAAAAY5I/kx6eN2_dA4w2p1KyxjA37HL08MUdIYIfwCEwYBhgL/s400/piramide-de-kelsen-e1576597148550.jpg" alt="Pirámide de Kelsen">
+
+        <h2 id="reflexion">Reflexión</h2>
+        <div class="reflexion-box">
+          <p><em>“La ciudadanía consciente y activa es la base de una democracia fuerte.”</em></p>
+          <p>Una democracia no se sostiene solo con elecciones, sino con ciudadanos informados, críticos y participativos. Cuando las personas conocen sus derechos, exigen justicia y colaboran en la solución de problemas comunes (como baches, inseguridad o basura en las calles), se construye una sociedad más justa y resiliente.</p>
+        </div>
+
+        <blockquote id="video" class="tiktok-embed" cite="https://www.tiktok.com/@mich011_1/video/7585981126896798997" data-video-id="7585981126896798997" style="max-width: 605px;min-width: 325px;" > <section> <a target="_blank" title="@mich011_1" href="https://www.tiktok.com/@mich011_1?refer=embed">@mich011_1</a> <a title="cienciassociales" target="_blank" href="https://www.tiktok.com/tag/cienciassociales?refer=embed">#cienciassociales</a> <a title="proyecto" target="_blank" href="https://www.tiktok.com/tag/proyecto?refer=embed">#proyecto</a>  <a title="fypシ゚viral" target="_blank" href="https://www.tiktok.com/tag/fyp%E3%82%B7%E3%82%9Aviral?refer=embed">#fypシ゚viral</a> <a title="tiktokviral" target="_blank" href="https://www.tiktok.com/tag/tiktokviral?refer=embed">#tiktokviral</a> <a target="_blank" title="♬ original sound - Mich011_" href="https://www.tiktok.com/music/original-sound-7585981207737961224?refer=embed">♬ original sound - Mich011_</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+
+        <h2 id="cuestionario">📝 Cuestionario: Derechos, Estado y Ciudadanía</h2>
+        <div class="cuestionario">
+          <form id="quizForm">
+            <!-- Preguntas del 1 al 12 -->
+            <div class="pregunta">
+              <p>1. ¿Qué es el contrato social?</p>
+              <label><input type="radio" name="q1" value="a"> Acuerdo entre ciudadanos y el Estado para convivir en sociedad</label>
+              <label><input type="radio" name="q1" value="b"> Tratado comercial internacional</label>
+              <label><input type="radio" name="q1" value="c"> Ley económica sobre impuestos</label>
+            </div>
+
+            <div class="pregunta">
+              <p>2. Verdadero o Falso: La ciudadanía económica incluye el derecho a un salario justo.</p>
+              <label><input type="radio" name="q2" value="v"> Verdadero</label>
+              <label><input type="radio" name="q2" value="f"> Falso</label>
+            </div>
+
+            <div class="pregunta">
+              <p>3. ¿Cuál NO es un elemento del Estado?</p>
+              <label><input type="checkbox" name="q3" value="a"> Población</label>
+              <label><input type="checkbox" name="q3" value="b"> Soberanía</label>
+              <label><input type="checkbox" name="q3" value="c"> Moneda única mundial</label>
+              <label><input type="checkbox" name="q3" value="d"> Territorio</label>
+            </div>
+
+            <div class="pregunta">
+              <p>4. ¿Qué protege la ciudadanía civil?</p>
+              <label><input type="radio" name="q4" value="a"> Derechos políticos exclusivamente</label>
+              <label><input type="radio" name="q4" value="b"> Derechos fundamentales como la vida y la libertad</label>
+              <label><input type="radio" name="q4" value="c"> Solo el derecho al voto</label>
+            </div>
+
+            <div class="pregunta">
+              <p>5. ¿Qué permitieron las reformas energéticas en México?</p>
+              <label><input type="radio" name="q5" value="a"> La participación de empresas privadas en la industria energética</label>
+              <label><input type="radio" name="q5" value="b"> La eliminación de Pemex</label>
+              <label><input type="radio" name="q5" value="c"> La prohibición de energías renovables</label>
+            </div>
+
+            <div class="pregunta">
+              <p>6. ¿Qué es la soberanía?</p>
+              <label><input type="radio" name="q6" value="a"> Capacidad de gobernarse a sí mismo</label>
+              <label><input type="radio" name="q6" value="b"> La eliminación de Pemex</label>
+              <label><input type="radio" name="q6" value="c"> La prohibición de energías renovables</label>
+            </div>
+
+            <div class="pregunta">
+              <p>7. ¿Qué es el Estado?</p>
+              <label><input type="radio" name="q7" value="a"> Una organización económica</label>
+              <label><input type="radio" name="q7" value="b"> Una sociedad sin leyes</label>
+              <label><input type="radio" name="q7" value="c"> Una organización política y jurídica</label>
+              <label><input type="radio" name="q7" value="d"> Un grupo cultural</label>
+            </div>
+
+            <div class="pregunta">
+              <p>8. ¿Cuáles son los elementos del Estado?</p>
+              <label><input type="radio" name="q8" value="a"> Gobierno, leyes y ejército</label>
+              <label><input type="radio" name="q8" value="b"> Población, territorio, gobierno y soberanía</label>
+              <label><input type="radio" name="q8" value="c"> Cultura, idioma y religión</label>
+              <label><input type="radio" name="q8" value="d"> Sociedad, poder y economía</label>
+            </div>
+
+            <div class="pregunta">
+              <p>9. ¿Quién ejerce el poder del Estado?</p>
+              <label><input type="radio" name="q9" value="a"> El territorio</label>
+              <label><input type="radio" name="q9" value="b"> La población</label>
+              <label><input type="radio" name="q9" value="c"> El gobierno</label>
+              <label><input type="radio" name="q9" value="d"> La nación</label>
+            </div>
+
+            <div class="pregunta">
+              <p>10. ¿Qué forma de participación permite la participación del pueblo?</p>
+              <label><input type="radio" name="q10" value="a"> Monarquía absoluta</label>
+              <label><input type="radio" name="q10" value="b"> Dictadura</label>
+              <label><input type="radio" name="q10" value="c"> Democracia</label>
+              <label><input type="radio" name="q10" value="d"> Imperio</label>
+            </div>
+
+            <div class="pregunta">
+              <p>11. ¿Cuál es la función del Estado?</p>
+              <label><input type="radio" name="q11" value="a"> Hacer negocios</label>
+              <label><input type="radio" name="q11" value="b"> Garantizar el orden y el bienestar social</label>
+              <label><input type="radio" name="q11" value="c"> Controlar empresas privadas</label>
+              <label><input type="radio" name="q11" value="d"> Eliminar derechos</label>
+            </div>
+
+            <div class="pregunta">
+              <p>12. Falso o verdadero: Hobbes creía que el ser humano era naturalmente bueno.</p>
+              <label><input type="radio" name="q12" value="f"> Falso</label>
+              <label><input type="radio" name="q12" value="v"> Verdadero</label>
+            </div>
+
+            <div class="pregunta">
+              <p>13. ¿Qué tipo de ciudadanía ejerce el derecho al voto?</p>
+              <label><input type="radio" name="q13" value="a"> Ciudadanía política</label>
+              <label><input type="radio" name="q13" value="b"> Ciudadanía civil</label>
+              <label><input type="radio" name="q13" value="c"> Ciudadanía económica</label>
+              <label><input type="radio" name="q13" value="d"> Ciudadanía social</label>
+            </div>
+
+            <div class="pregunta">
+              <p>14. ¿Qué garantiza el enfoque de derechos humanos en el Estado?</p>
+              <textarea name="q14" placeholder="Escribe tu respuesta..."></textarea>
+            </div>
+
+            <div class="pregunta">
+              <p>15. ¿Qué es la nación?</p>
+              <textarea name="q15" placeholder="Escribe tu respuesta..."></textarea>
+            </div>
+
+            <div class="pregunta">
+              <p>16. ¿Cuál no es elemento del Estado?</p>
+              <label><input type="radio" name="q16" value="a"> Territorio</label>
+              <label><input type="radio" name="q16" value="b"> Población</label>
+              <label><input type="radio" name="q16" value="c"> Cultura</label>
+              <label><input type="radio" name="q16" value="d"> Gobierno</label>
+            </div>
+
+            <div class="pregunta">
+              <p>17. ¿Qué caracteriza al Estado de derecho?</p>
+              <textarea name="q17" placeholder="Escribe tu respuesta..."></textarea>
+            </div>
+
+            <div class="pregunta">
+              <p>18. ¿Qué significa que un estado sea federal?</p>
+              <textarea name="q18" placeholder="Escribe tu respuesta..."></textarea>
+            </div>
+
+            <div class="pregunta">
+              <p>19. ¿Qué tipo de estado concentra el poder en una sola persona?</p>
+              <textarea name="q19" placeholder="Escribe tu respuesta..."></textarea>
+            </div>
+
+            <div class="pregunta">
+              <p>20. ¿Qué protege la garantia de estado?</p>
+              <label><input type="radio" name="q20" value="a"> Derechos frente a abuso de poder</label>
+              <label><input type="radio" name="q20" value="b"> Derechos fundamentales como la vida y la libertad</label>
+              <label><input type="radio" name="q20" value="c"> Solo el territorio</label>
+            </div>
+
+            <button type="submit">Enviar Cuestionario</button>
+          </form>
+
+          <div id="resultado"></div>
+        </div>
+
+        <h2 id="pdf">📄 Material de Apoyo</h2>
+        <a href="pdfs/ciencias_sociales.pdf" class="pdf-link" target="_blank">Descargar Guía Completa (PDF)</a>
+        <a href="inicio.html" class="pdf-link" target="_blank">Inicio</a>
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p><small>© 2026 - CECyTEM Cuautitlán - Tercer Semestre de Programación</small></p>
+  </footer>
+
+  <script>
+    // Contador de visitas
+    let visitas = localStorage.getItem('visitas_ciencias_sociales') || 0;
+    visitas = parseInt(visitas) + 1;
+    localStorage.setItem('visitas_ciencias_sociales', visitas);
+    document.getElementById('visit-counter').textContent = ` Visitas: ${visitas}`;
+
+    // Fecha y hora
+    const now = new Date();
+    document.getElementById('fechaHora').textContent = ` ${now.toLocaleDateString('es-MX')} |  ${now.toLocaleTimeString('es-MX')}`;
+
+    // Respuestas correctas (solo para preguntas cerradas)
+    const correctas = {
+      q1: 'a',
+      q2: 'v',
+      q3: ['c'], // solo "moneda única mundial" es incorrecta, pero la pregunta pide lo que NO es → marcar solo "c"
+      q4: 'b',
+      q5: 'a',
+      q6: 'a',
+      q7: 'c',
+      q8: 'b',
+      q9: 'c',
+      q10: 'c',
+      q11: 'b',
+      q12: 'f',
+      q13: 'a',
+      q16: 'c'
+    };
+
+    // Evaluar cuestionario
+    document.getElementById('quizForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      let aciertos = 0;
+      let total = 14; // 14 preguntas cerradas
+
+      // P1
+      if (document.querySelector('input[name="q1"]:checked')?.value === correctas.q1) aciertos++;
+      // P2
+      if (document.querySelector('input[name="q2"]:checked')?.value === correctas.q2) aciertos++;
+      // P3 (checkbox: debe seleccionar SOLO "c")
+      const q3Sel = Array.from(document.querySelectorAll('input[name="q3"]:checked')).map(el => el.value);
+      if (q3Sel.length === 1 && q3Sel[0] === 'c') aciertos++;
+      // P4 a P13 y P16
+      for (let i of [4,5,6,7,8,9,10,11,12,13,16]) {
+        if (document.querySelector(`input[name="q${i}"]:checked`)?.value === correctas[`q${i}`]) aciertos++;
+      }
+
+      // Mostrar resultado
+      const resDiv = document.getElementById('resultado');
+      resDiv.innerHTML = `
+        <h3>✅ Resultado</h3>
+        <p>Respuestas correctas: <strong>${aciertos}</strong> de <strong>${total}</strong> (preguntas de opción múltiple).</p>
+        <p>Las preguntas abiertas se revisarán manualmente.</p>
+      `;
+      resDiv.style.display = 'block';
+    });
+  </script>
+</body>
+</html>

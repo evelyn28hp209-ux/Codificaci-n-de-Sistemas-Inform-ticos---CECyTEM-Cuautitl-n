@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lengua y Comunicación</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f9f7f0;
+      color: #333;
+    }
+
+    /* Encabezado superior */
+    .encabezado {
+      background: linear-gradient(to right, #5d4037, #795548);
+      color: white;
+      padding: 15px 25px;
+      text-align: center;
+    }
+
+    .encabezado h1 {
+      margin-bottom: 8px;
+      font-size: 1.8em;
+    }
+
+    .info-superior {
+      font-size: 0.95em;
+      opacity: 0.95;
+    }
+
+    /* Contenedor principal */
+    .contenedor {
+      display: flex;
+      min-height: calc(100vh - 140px);
+    }
+
+    /* Sidebar izquierdo */
+    .sidebar {
+      width: 240px;
+      background-color: #f3e9dd;
+      padding: 20px 15px;
+      border-right: 1px solid #d7ccc8;
+      overflow-y: auto;
+    }
+
+    .sidebar h3 {
+      margin-bottom: 15px;
+      color: #5d4037;
+      font-size: 1.1em;
+    }
+
+    .sidebar ul {
+      list-style: none;
+    }
+
+    .sidebar li {
+      margin: 12px 0;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: #4e342e;
+      font-weight: 600;
+      display: block;
+      padding: 6px 10px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    .sidebar a:hover {
+      background-color: #e0d6c9;
+    }
+
+    /* Contenido principal */
+    .contenido-principal {
+      flex: 1;
+      padding: 25px;
+      overflow-y: auto;
+
+      background-image: url(img/brown.jpg);
+      height: 100%;
+    }
+
+    .contenido-materia h2 {
+      margin: 25px 0 15px 0;
+      color: #5d4037;
+      border-bottom: 2px solid #d7ccc8;
+      padding-bottom: 5px;
+      
+    }
+
+    .contenido-materia p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+
+    table, th, td {
+      border: 1px solid #bcaaa4;
+    }
+
+    th {
+      background-color: #d7ccc8;
+      padding: 10px;
+      text-align: left;
+    }
+
+    td {
+      padding: 8px;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      margin: 15px 0;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .video-materia {
+      max-width: 100%;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+
+    .pdf-link {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #5d4037;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .pdf-link:hover {
+      background-color: #3e2723;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #5d4037;
+      color: white;
+      margin-top: 30px;
+    }
+
+    .buitre {
+      max-width: 200%;
+      max-height: 200%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Encabezado superior -->
+  <div class="encabezado">
+    <h1> Lengua y Comunicación</h1>
+    <div class="info-superior">
+      <span id="visit-counter">👁️ Visitas: --</span> | 
+      <span id="fechaHora">--</span>
+    </div>
+  </div>
+
+  <!-- Contenedor con sidebar y contenido -->
+  <div class="contenedor">
+    
+    <!-- Sidebar izquierdo: anclas -->
+    <div class="sidebar">
+      <h3>📚 Secciones</h3>
+      <ul>
+        <li><a href="#comunicacion-digital">Comunicación Digital</a></li>
+        <li><a href="#vocacion-pepazo">"Vocación de Pepazo"</a></li>
+        <li><a href="#el-puente">"El Puente"</a></li>
+        <li><a href="#alma">Cortometraje "Alma"</a></li>
+        <li><a href="#ensayo">Ensayo: Niño y Buitre</a></li>
+        <li><a href="#video">Video</a></li>
+        <li><a href="#pdf">PDF</a></li>
+      </ul>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="contenido-principal">
+      <div class="contenido-materia">
+
+        <h2 id="comunicacion-digital">La Importancia de la Comunicación en la Sociedad Digital</h2>
+        <p>En la era digital, la comunicación efectiva se ha vuelto esencial para el desarrollo personal y profesional. Saber expresar ideas con claridad, escuchar activamente y adaptar el mensaje al contexto permite construir relaciones sólidas, resolver conflictos y participar de manera crítica en la sociedad.</p>
+        <p>Además, el dominio de la lengua materna fortalece la identidad cultural y facilita el aprendizaje de otras lenguas. La lectura, escritura y análisis de textos no solo enriquecen el vocabulario, sino que desarrollan el pensamiento lógico y la empatía.</p>
+
+        <h2 id="vocacion-pepazo">Síntesis: "Vocación de Pepazo"</h2>
+        <p>“Vocación de pepazo” es una expresión coloquial que refleja la actitud de alguien que constantemente busca pelear o causar conflictos sin razón aparente. Este comportamiento suele derivar de inseguridades, frustraciones no resueltas o la búsqueda de atención.</p>
+        <p>En el ámbito escolar o laboral, esta actitud entorpece la colaboración y el clima organizacional. Fomentar la inteligencia emocional, la asertividad y la resolución pacífica de conflictos es clave para superar esta “vocación”.</p>
+        <p>La verdadera fortaleza no está en imponerse mediante la agresión, sino en dialogar, comprender y construir puentes. Educar desde la empatía permite transformar a los “pepazos” en líderes positivos.</p>
+        <p>Reflexionar sobre nuestras propias reacciones ante el estrés o la crítica nos ayuda a identificar si actuamos desde la razón o desde el impulso destructivo.</p>
+
+        <h2 id="el-puente">El Puente – Análisis Literario</h2>
+        <p>A continuación, tabla de hechos y comentarios sobre la lectura "El Puente":</p>
+
+        <table>
+          <tr>
+            <th>Hechos</th>
+            <th>Comentarios</th>
+          </tr>
+          <tr><td>1. Un hombre cruza un puente.</td><td>Simboliza una transición vital.</td></tr>
+          <tr><td>2. Encuentra a un desconocido.</td><td>Representa el encuentro con lo desconocido.</td></tr>
+          <tr><td>3. Le ofrece ayuda.</td><td>Muestra solidaridad humana.</td></tr>
+          <tr><td>4. El desconocido desaparece.</td><td>Puede ser una alucinación o ángel.</td></tr>
+          <tr><td>5. El protagonista reflexiona.</td><td>Indica crecimiento personal tras la experiencia.</td></tr>
+        </table>
+
+        <h2 id="alma">Síntesis del Cortometraje "Alma"</h2>
+        <p>"Alma" es un cortometraje animado que narra la historia de una niña curiosa que entra en una tienda encantada. Atraída por una muñeca idéntica a ella, la toca y queda atrapada en un maniquí, repitiendo el ciclo con otros niños.</p>
+        <p>La obra explora temas como la curiosidad infantil, las consecuencias de la desobediencia y el peligro de los deseos superficiales. El ambiente oscuro y la música crean una atmósfera de suspenso y advertencia.</p>
+        <p>Simbólicamente, la tienda representa las tentaciones del mundo adulto, y la muñeca, el ego o la identidad perdida. El mensaje final invita a la reflexión: no todo lo que brilla es oro, y la curiosidad debe ir acompañada de prudencia.</p>
+
+        <h2 id="ensayo">Importancia de los Textos: Ensayo</h2>
+        <div class="buitre">
+        <img src="https://media.a24.com/p/e8be717499853f8e783799ab72dabb11/adjuntos/296/imagenes/008/784/0008784676/1200x675/smart/la-famosa-foto-kevin-carter-que-publico-the-new-york-times-1993.jpg" alt="Niño y buitre">
+        </div>
+
+        <p>La imagen del niño y el buitre es un poderoso recordatorio de la desigualdad global. Capturada en Sudán durante una hambruna, muestra la vulnerabilidad humana frente a la indiferencia. Los textos que describen, analizan o reflexionan sobre esta imagen cumplen una función ética: <strong>concientizar</strong>.</p>
+        <p>Los textos no solo informan; transforman. A través de ellos, las injusticias salen de la sombra y exigen respuesta. En la era de la información, discernir entre textos veraces y falsos es una competencia vital. La educación en Lengua y Comunicación nos dota de herramientas para leer críticamente, cuestionar fuentes y construir discursos responsables.</p>
+        <p>Finalmente, escribir es un acto de resistencia. Dar una voz a los olvidados, como ese niño, es una forma de humanizar la historia y exigir un mundo más justo.</p>
+
+        <h2 id="video">🎥 Video de Apoyo</h2>
+        <video autoplay loop controls>
+          <source src="videos/materia.mp4">
+        </video>
+
+        <h2 id="pdf">📄 Material de Apoyo</h2>
+        <a href="pdfs/lengua.pdf" class="pdf-link" target="_blank">Descargar Guía Completa (PDF)</a>
+        <a href="inicio.html" class="pdf-link" target="_blank">Inicio</a>
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p><small>© 2026 - CECyTEM Cuautitlán - Tercer Semestre de Programación</small></p>
+  </footer>
+
+  <script>
+    // Contador de visitas específico para esta materia
+    let visitas = localStorage.getItem('visitas_lengua') || 0;
+    visitas = parseInt(visitas) + 1;
+    localStorage.setItem('visitas_lengua', visitas);
+    document.getElementById('visit-counter').textContent = ` Visitas: ${visitas}`;
+
+    // Fecha y hora
+    const now = new Date();
+    document.getElementById('fechaHora').textContent = ` ${now.toLocaleDateString('es-MX')} |  ${now.toLocaleTimeString('es-MX')}`;
+  </script>
+</body>
+</html>
